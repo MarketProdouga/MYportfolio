@@ -1,0 +1,31 @@
+---
+title: 永遠に動く波🏄🌊
+description: CSSだけで永遠に動き続ける波を再現いたします🏄🌊
+url: https://codepen.io/Prodouga/pen/wvNoLLr
+date: 2023-03-28
+published: true
+---
+
+
+<iframe width="100%" height="315" src="//jsfiddle.net/prodouga/81s3t5hc/2/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+CSSだけで永遠に動き続ける波を再現いたします🏄🌊
+
+<iframe width="100%" height="500" src="//jsfiddle.net/prodouga/81s3t5hc/2/embedded/css/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+
+このCSSコードは、ウェブページに波のアニメーションを追加するためのものです。以下にその解説を記載します。
+
+## CSSクラスの説明
+
+1. **.waves**: このクラスは、波のアニメーションを表示する領域を定義します。幅は100%で、高さはビューポートの高さの15%です。最小高さは100px、最大高さは150pxです。
+
+2. **.content**: このクラスは、ページのコンテンツを表示する領域を定義します。高さはビューポートの高さの20%です。
+
+3. **.parallax > use**: このセレクタは、SVGの`use`要素に対してアニメーションを適用します。アニメーションは`move-forever`という名前で、25秒間で完了し、無限に繰り返されます。
+
+4. **@keyframes move-forever**: このキーフレームアニメーションでは、要素を水平方向に移動させます。開始時点では-90pxの位置から始まり、終了時点では85pxの位置に移動します。
+
+5. **@media (max-width: 768px)**: このメディアクエリは、画面幅が768px以下の場合に適用されます。`.waves`の高さが40pxに、`.content`の高さがビューポートの高さの30%に変更されます。
+
+以上が、このCSSコードの解説です。このコードを使用することで、ウェブページに美しい波のアニメーションを追加することができます。このコードを活用して、ユーザーに魅力的な体験を提供してみてください。

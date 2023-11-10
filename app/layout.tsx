@@ -6,16 +6,16 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "portfolio.prodouga.com",
+    template: "%s | portfolio.prodouga.com",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "プロドウガのポートフォリオ",
   openGraph: {
-    title: "chronark.com",
+    title: "portfolio.prodouga.com",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+      "プロドウガのポートフォリオ",
+    url: "https://portfolio.prodouga.com",
+    siteName: "portfolio.prodouga.com",
     images: [
       {
         url: "https://chronark.com/og.png",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         height: 1080,
       },
     ],
-    locale: "en-US",
+    locale: "ja_JP",
     type: "website",
   },
   robots: {
@@ -61,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
+    <html lang="ja" className={[inter.variable, calSans.variable].join(" ")}>
       <head>
         <Analytics />
       </head>
