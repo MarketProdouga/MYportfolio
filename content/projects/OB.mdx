@@ -8,6 +8,23 @@ published: true
 
 ---
 
+```
+root
+└─packages
+    ├─library // ライブラリ側
+    │  └─packages
+    │      ├─multi // 複数ファイルのライブラリ
+    │      │  └─src
+    │      │      └─utils
+    │      │          ├─hoge
+    │      │          └─piyo
+    │      └─single // 単一ファイルのライブラリ
+    │          └─src
+    └─main // ライブラリを使う側
+        └─src
+            └─libs
+```
+
 In today's digital age, serverless computing has become increasingly popular due to its scalability and cost-efficiency. One of the challenges of serverless computing is to manage resources efficiently, and one critical aspect of this is rate limiting. Rate limiting is a technique that limits the number of requests a client can make to a server over a given period. This technique can prevent abuse, improve performance, and reduce costs. One npm package that helps implement rate limiting for serverless applications is @upstash/ratelimit, built on top of Upstash Redis.
 
 Upstash is a managed Redis-compatible database service designed for serverless applications.

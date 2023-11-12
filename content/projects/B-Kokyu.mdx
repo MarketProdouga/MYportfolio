@@ -29,9 +29,41 @@ published: true
 </div>
 ```
 
+## HTMLの解説
+
+このHTMLは「文字の呼吸」の見出し文字を実装したコードです。
+
+主なポイントは以下の通りです:
+
+- div.containerでコンテンツを中央寄せするレイアウト
+- pタグで見出し文字をラップ
+- pタグ内の各文字をspanタグでラップ
+  - aria-hidden=true でアクセシビリティ用に非表示にしている
+- aria-labelでpタグ全体の読み上げ文字列を設定
+
+このようにpタグ内の文字をspanタグで個別にくくることで、CSSやJSで文字ごとの効果を付与できます。
+
+アクセシビリティ面も配慮し、スクリーンリーダーでの読み上げ用に全体の文字列を用意しています。
+
+視覚効果とセマンティック構造の両立という好例だと思います。
+
+HTML、CSS、JSが連携した実践的なコーディングの例です。
+
 ## CSS
 
 <iframe width="100%" height="300" src="//jsfiddle.net/prodouga/yo5pxt93/1/embedded/css/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## CSSの解説
+
+pタグの文字にグラデーションの背景を設定し、背景が文字にクリッピングされるようにしている
+
+pタグ内のspanにanimationを設定し、font-variation-settingsでフォントのWeightを変化させることで呼吸効果を出している
+
+@keyframesでanimationの0%と100%時のfont-variation-settingsを指定
+
+このように、可変フォントとCSSのanimation、gradient、clippingなどの機能を組み合わせることで、文字が呼吸しているような実現しています。
+
+軽快な動きとグラデーションの背景が魅力的なエフェクトになっています。CSSの柔軟な表現力を感じさせるコード例だと思います。
 
 ## JavaScript
 
@@ -46,94 +78,24 @@ spans.forEach(function(span, i) {
 });
 ```
 
-- **Shareable Links:** Share your environment variables securely by sending a
-  link
-- **End-to-End Encryption:** AES-GCM encryption is used to encrypt your data
-  before sending it to the server
-- **Limit number of reads:** Limit the number of times a link can be read
-- **Auto Expire:** Automatically expire links and delete data after a certain
-  time
+## JavaScriptの解説
+
+このJavaScriptコードは、HTMLのpタグ内のすべてのspan要素に対して、アニメーションのdelayを設定しています。
+
+主な処理は以下の通りです:
+
+- document.querySelectorAllでpタグ内のすべてのspan要素を取得
+- spans.lengthでspanの総数を取得
+- forEachで各spanに対して処理
+  - i は現在のspanのインデックス
+  - mappedIndex は中央のspanを0とした時のインデックスにマッピング
+  - animationDelayをマッピングしたインデックス x 0.25秒 に設定
+
+これにより、span要素が中央の文字から順にアニメーションが始まるようになり、文字全体で波紋のような動きになります。
+
+配列のマッピングとアニメーションディレイの制御を組み合わせることで、独特の動きを実現している例です。
+JavaScriptを使ってCSSアニメーションをより高度にコントロールできる実力が必要です。
 
 
-
-![](https://github.com/chronark/envshare/raw/main/img/envshare.png)
-
-## Built with
-
-- [Next.js](https://nextjs.org)
-- [tailwindcss](https://tailwindcss.com)
-- Deployed on [Vercel](https://vercel.com?utm_source=envshare)
-- Data stored on [Upstash](https://upstash.com?utm_source=envshare)
-
-## Deploy your own
-
-Detailed instructions can be found [here](https://envshare.dev/deploy)
-
-All you need is a Redis database on Upstash and a Vercel account. Click the
-button below to clone and deploy:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=EnvShare&demo-description=Simple%20Next.js%20%2B%20Upstash%20app%20to%20share%20environment%20variables%20securely%20using%20AES-GCM%20encryption.&demo-url=https%3A%2F%2Fenvshare.dev%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F5SaFBHXp5FBFJbsTzVqIJ3%2Ff0f8382369b7642fd8103debb9025c11%2Fenvshare.png&project-name=EnvShare&repository-name=envshare&repository-url=https%3A%2F%2Fgithub.com%2Fchronark%2Fenvshare&from=templates&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17)
-
-
-
-## Configuration
-
-### Environment Variables
-
-`ENABLE_VERCEL_ANALYTICS` Any truthy value will enable Vercel Analytics. This is turned off by default
-
-## Contributing
-
-This repository uses `pnpm` to manage dependencies. Install it using
-`npm install -g pnpm`
-
-Please run `pnpm fmt` before committing to format the code.
-
-## Docs
-
-Docs in the README are temporary and will be moved to the website soon.
-
-### API
-
-#### Store a secret
-
-**PLEASE NEVER EVER UPLOAD UNENCRYPTED SECRETS.**
-
-This endpoint is only meant to store **already encrypted** secrets. The
-encrypted secrets are stored in plain text.
-
-```sh-session
-$ curl -XPOST -s https://envshare.dev/api/v1/secret -d "already-encrypted-secret"
-```
-
-You can add optional headers to configure the ttl and number of reads.
-
-```sh-session
-$ curl -XPOST -s https://envshare.dev/api/v1/secret -d "already-encrypted-secret" -H "envshare-ttl: 3600" -H "envshare-reads: 10"
-```
-
-- Omitting the `envshare-ttl` header will set a default of 30 days. Disable the
-  ttl by setting it to 0. (`envshare-ttl: 0`)
-- Omitting the `envshare-reads` header will simply disable it and allow reading
-  for an unlimited number of times.
-
-This endpoint returns a JSON response with the secret id:
-
-
-
-#### Retrieve a secret
-
-You need an id to retrieve a secret. The id is returned when you store a secret.
-
-```sh-session
-$ curl -s https://envshare.dev/api/v1/secret/HdPbXgpvUvNk43oxSdK97u
-```
-
-```json
-{
-  "data": {
-    "secret": "Hello",
-    "remainingReads": 1
-  }
-}
-```

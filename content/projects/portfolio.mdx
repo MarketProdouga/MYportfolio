@@ -1,0 +1,96 @@
+---
+title: ポートフォリオサイト
+description: このサイトはNext.jsを使って作成されたポートフォリオサイトの例です。
+date: "2022-07-18"
+url: https://portfolio.prodouga.com
+published: true
+
+---
+# このサイトについて
+
+```md
+サイト名：Portfolio
+
+## フレームワーク
+    Next.js13
+
+## CSS
+    Tailwind
+
+## データベース
+    Upstash
+
+```
+<iframe width="100%" height="500" src="//portfolio.prodouga.com" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+[https://portfolio.prodouga.com/](https://portfolio.prodouga.com/)
+
+このサイトはNext.jsを使って作成されたポートフォリオサイトの例です。
+
+特徴としては以下の点が挙げられます。
+
+- Next.js 13のApp Routerを利用し、クリーンなURLでルーティング
+- Contentlayerで Markdown記事の管理
+- Upstash Redisを使い、記事ごとのページビュー数をカウント
+- Tailwind CSSによるスタイリング
+- 動的なSEO対応
+- ダークモード対応
+- レスポンシブデザイン
+
+Next.jsの最新機能を活用し、パフォーマンスとSEOに優れたサイトを構築しています。
+
+Redisを使ったページビューカウンターは、最近のトレンドを取り入れた実装です。
+
+Markdown記事の管理にContentlayerを使うことで、記事作成を効率化しています。
+
+またTailwind CSSを使ったスタイリングは、カスタマイズ性が高くメンテナンス性に優れています。
+
+先進的な技術スタックを活用した、見本となるようなポートフォリオサイトの実装例だと言えます。
+
+
+## ディレクトリ構造
+
+treeコマンドを使用して出力します。
+```bash
+% tree -L 2 -I node_modules*
+```
+
+node_modulesディレクトリは除外しています。
+
+```
+.
+├── LICENSE
+├── README.md
+├── app
+│   ├── components
+│   ├── contact
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── projects
+├── content
+│   └── projects
+├── contentlayer.config.js
+├── global.css
+├── mdx-components.tsx
+├── next-env.d.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── pages
+│   └── api
+├── pnpm-lock.yaml
+├── postcss.config.js
+├── public
+│   ├── favicon.png
+│   ├── fonts
+│   ├── og.png
+│   └── planetfall.png
+├── rome.json
+├── tailwind.config.js
+├── tsconfig.json
+├── types
+│   └── mdx.d.ts
+└── util
+    └── mouse.ts
+
+```
