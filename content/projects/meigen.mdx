@@ -1,36 +1,99 @@
 ---
-title: アーティスティック名言集
+title: 美しい名言集
 description:  名言が美しいグラフィックと共に表示されるWEBサイト。
 date: "2023-09-01"
 url: https://prodouga.com/meigen
 published: true
 ---
 
+<iframe width="100%" height="500" src="//codepen.io/Prodouga/embed/LYqbwmx?default-tab=result" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-[![](/planetfall.png)](https://planetfall.io)
-
-Planetfall is a SaaS platform that provides global latency monitoring and synthetic monitoring for APIs. With over 60 regions to monitor from, customers can gain insights into the true performance of their API by checking latency from around the world. 
-Planetfall offers custom timeouts, threshold notifications, and real-time alerts for potential performance issues. Additionally, customers can create custom status pages to share with their customers, which can display availability and latency for every region. Planetfall offers a free tier that includes 100k checks per month and scales as customers grow. Overall, Planetfall helps customers stay in control of their API's performance, improve communication with their customers, and build trust.
-
-```ts
-import { Tinybird } from "@chronark/zod-bird";
-import { z } from "zod";
-
-const tb = new Tinybird({ token: "token" });
-
-export const getEvents = tb.buildPipe({
-  pipe: "get_events__v1",
-  parameters: z.object({
-    tenantId: z.string(),
-  }),
-  data: z.object({
-    event: z.string(),
-    time: z.number().transform((t) => new Date(t)),
-  }),
-});
+[https://dev.to/prodouga/mei-siiming-yan-ji-2n71](https://dev.to/prodouga/mei-siiming-yan-ji-2n71)
 
 
-const res = await getEvents({ tenantId: "chronark" })
+## ソースコード
 
-// res.data = {event: string, time: Date}[]
-```
+長いためjsfiddleにまとめています。
+
+<iframe width="100%" height="500" src="//jsfiddle.net/prodouga/oxf6yvqs/2/embedded/js,html,css/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## HTMLの解説
+このHTMLは、名言集のウェブサイトのマークアップを定義しています。
+
+主な内容:
+
+- headにサイトのタイトル、フォント、CSSファイルを読み込んでいる
+
+- body内にメインの#wrapper divを定義 
+
+- #canvas_containerはthree.jsのキャンバス用
+
+- .textは名言を表示するdiv
+
+- .clickInfoはクリックを促すテキスト 
+
+- #firstは初期テクスチャの画像
+
+- .btnがフルスクリーンボタンなど
+
+- scriptでthree.js、GSAP、SplitTextのJSライブラリを読み込み
+
+- script.jsにアプリのメインLOGICを記述
+
+このHTMLで、three.jsによるグラフィックと、名言テキスト、ボタンなどの要素が配置されています。
+CSSとJavaScriptで動作を定義する基本的な構成になっています。
+
+three.jsのcanvas、テキスト、ボタンなどのdivが適切に配置されており、シンプルでわかりやすいマークアップになっています。
+
+## CSSの解説
+
+
+主なポイント:
+
+- `*`でマージン・パディングをリセットしている
+- `body`を`overflow: hidden`にしてコンテンツがはみ出ないようにしている
+
+- `#wrapper`がメインのコンテナー。`position: relative`にして子要素の基準位置を設定できるようにする
+
+- `#canvas_container`がThree.jsのキャンバスを置く領域。`position: absolute`で親要素の中に配置。
+
+- `.text`が名言を表示するブロック。`position: absolute`で中央に配置し、スタイル設定。
+
+- `.clickInfo`がクリックアドバイスのテキスト。初期状態では非表示にしている。
+
+- `.btn`がフルスクリーンボタンなどのスタイル定義。
+
+- `@media`クエリでスマホ版のフォントサイズを調整。
+
+このCSSにより、コンテンツを中央に配置し、アニメーションしやすい基本的なレイアウトが構築されています。
+three.jsの描画領域と、テキスト、ボタンなどの要素が適切に配置され、スタイル設定されています。
+
+## JavaScriptの解説
+
+概要:
+
+- THREE.jsを使用して3Dグラフィックを生成
+- 名言テクスチャをロード
+- 画像のピクセルデータからパーティクルを生成
+- パーティクルの位置・動きをシェーダーで制御  
+- GSAPを使用したアニメーション
+- マウスインタラクション
+
+主な機能:
+
+- initThree(): THREE.jsのセットアップ
+- pixelExtraction(): 画像のピクセルデータ取得
+- initParticles(): パーティクルのジオメトリとシェーダー定義
+- initTail(): マウス軌跡のためのテクスチャ
+- initRaycaster(): マウス検出
+- changeTexture(): テクスチャとアニメーション変更
+- vertexShader(): パーティクルの位置計算
+- fragmentShader(): パーティクルの描画
+- animate(): メインループ
+- resize(): ウィンドウサイズ変更時の調整
+
+これにより、画像ピクセルをパーティクルとして3D空間に配置し、
+シェーダーを用いた表現力豊かなグラフィックを実現しています。
+GSAPによるタイムラインアニメーションとマウスインタラクションで、
+インタラクティブで洗練されたエフェクトを作り出しています。
+
