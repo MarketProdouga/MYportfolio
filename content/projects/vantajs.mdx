@@ -1,10 +1,195 @@
 ---
-title: Vanta.js
-description: Vanta.js
-date: "2021-03-16"
-url: https://prodouga.com
+title: vanta.js-インタラクティブな背景
+description: Vanta.jsを使用してインタラクティブな背景を表示するウェブページ
+date: "2023-10-16"
+url: https://jsfiddle.net/prodouga/0un53czq/2/
 published: true
 
 ---
 
-<iframe width="100%" height="300" src="//jsfiddle.net/prodouga/0un53czq/2/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+<iframe width="100%" height="500" src="//jsfiddle.net/prodouga/0un53czq/13/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## 使用した技術
+- Vanta.js: インタラクティブな背景エフェクトライブラリ
+- JavaScript: Vanta.jsの制御とインタラクション
+- HTML/CSS: ページのレイアウトとスタイル
+
+## 制作意図
+- Vanta.jsの機能を学ぶこと
+- インタラクティブな背景を実現すること  
+
+## こだわりポイント
+- ドロップダウンで背景エフェクトを切り替え
+- マウス/タッチでのインタラクション
+- スマホ対応のレスポンシブデザイン
+
+Vanta.jsの表現力とインタラクティブ性に注力したこと、使いやすいUIを意識しています。
+
+## ソースコード
+<iframe width="100%" height="500" src="//jsfiddle.net/prodouga/0un53czq/13/embedded/js,html,css/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+HTMLは、Vanta.jsを使用してインタラクティブな背景を表示するウェブページの構造を定義しています。
+
+## CSSの解説
+上記のCSSは、Vanta.jsを使用してインタラクティブな背景を表示するウェブページのスタイルを指定しています。
+
+```css
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,900|Montserrat|Roboto");
+```
+
+このコードは、Google Fontsから`Nunito`、`Montserrat`、`Roboto`フォントを読み込んでいます。
+
+```css
+* {
+ padding: 0;
+ margin: 0;
+}
+```
+
+このコードは、すべての要素にパディングとマージンを0に設定しています。これにより、ウェブページのレイアウトを簡単に調整できます。
+
+```css
+#vantajs-bg {
+ position: absolute;
+ z-index: -1;
+ width: 100%;
+ height: 100%;
+}
+```
+
+このコードは、`vantajs-bg`というIDを持つ要素に絶対配置を設定し、Zインデックスを-1に設定しています。これにより、背景をすべてのコンテンツの下に表示します。また、幅と高さを100%に設定することで、背景をブラウザのウィンドウ全体に表示します。
+
+```css
+.container {
+ width: 100%;
+ height: 100vh;
+ text-align: center;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+```
+
+このコードは、`.container`クラスを持つ要素に幅と高さを100%に設定し、テキストを中央揃えにしています。また、フレックスボックスを使用して、要素を垂直方向に中央揃えにして、コンテンツを均等に配置しています。
+
+```css
+.container h2 {
+ font-size: 4em;
+ font-family: "Montserrat", sans-serif;
+ color: #FFFFFF;
+ text-shadow: 1px 1px #D37E86;
+}
+```
+
+このコードは、`.container`クラスを持つ要素の子要素である`h2`タグにフォントサイズを4em、フォントファミリーを`Montserrat`、色を#FFFFFFに設定しています。また、テキストシャドウを設定して、テキストに奥行きを持たせています。
+
+```css
+.container p {
+ font-size: 1.5em;
+ font-family: "Nunito Sans", sans-serif;
+ color: #FFFFFF;
+ text-shadow: 1px 1px #070707;
+ margin-bottom: 0.5rem;
+}
+```
+
+このコードは、`.container`クラスを持つ要素の子要素である`p`タグにフォントサイズを1.5em、フォントファミリーを`Nunito Sans`、色を#FFFFFFに設定しています。また、テキストシャドウを設定して、テキストに奥行きを持たせています。さらに、マージン下を0.5remに設定して、段落の間隔を調整しています。
+
+```css
+.container select {
+ width: 200px;
+}
+```
+
+このコードは、`.container`クラスを持つ要素の子要素である`select`タグに幅を200pxに設定しています。これにより、ドロップダウンリストの幅を調整しています。
+
+```css
+footer {
+ width: 100%;
+ background: rgba(0, 0, 0, 0.2);
+ position: absolute;
+ bottom: 0;
+ right: 5px;
+ text-align: right;
+ font-size: 0.6em;
+ text-transform: uppercase;
+ letter-spacing: 2px;
+ font-family: "Roboto", sans-serif;
+ color: #FFFFFF;
+ padding: 0.5rem;
+}
+```
+
+このコードは、`footer`タグに幅を100%、背景色をrgba(0, 0, 0, 0.2)、絶対配置を設定しています。また、テキストを右揃えにし、フォントサイズを0.6em、テキスト変換を大文字、文字間隔を2pxに設定しています。さらに、フォントファミリーを`Roboto`、色を#FFFFFFに設定し、パディングを0.5remに設定しています。
+
+```css
+footer p {
+ border: none;
+ padding: 0;
+}
+```
+
+このコードは、`footer`タグの子要素である`p`タグのボーダーとパディングを0に設定しています。これにより、フッター
+
+## JavaScriptの解説
+
+上記のJSコードは、Vanta.jsを使用してインタラクティブな背景を表示するコードです。
+
+```javascript
+var bgEffects = {
+ "0":VANTA.BIRDS,
+ "1":VANTA.HALO,
+ "2":VANTA.FOG,
+ "3":VANTA.WAVES,
+ "4":VANTA.DOTS,
+ "5":VANTA.CLOUDS
+}
+```
+
+このコードは、`bgEffects`という変数を定義し、`Vanta.js`のさまざまな効果をキーと値でマッピングしています。
+
+```javascript
+document.getElementById("effect").addEventListener("change", ()=> run());
+```
+
+このコードは、`effect`というIDを持つドロップダウンリストの値が変更されたときに、`run()`関数を呼び出すようにイベントリスナーを登録しています。
+
+```javascript
+function run(){
+ const effectID = document.getElementById("effect").value;
+ bgEffects[effectID]({
+  el: document.getElementById("vantajs-bg"),
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00
+ });
+}
+```
+
+このコードは、ドロップダウンリストの値を取得し、`bgEffects`変数から対応する効果を取得します。その後、`Vanta.js`の`create()`メソッドを使用して、指定した効果で背景を作成します。
+
+`create()`メソッドの引数は、次のとおりです。
+
+* `el`: 背景を表示する要素
+* `mouseControls`: マウスで背景を操作するかどうか
+* `touchControls`: タッチで背景を操作するかどうか
+* `gyroControls`: ジャイロセンサーで背景を操作するかどうか
+* `minHeight`: 背景の最小高さ
+* `minWidth`: 背景の最小幅
+* `scale`: 背景のスケール
+* `scaleMobile`: モバイル端末での背景のスケール
+
+上記のコードでは、すべての引数のデフォルト値を使用しています。
+
+```javascript
+run();
+```
+
+このコードは、`run()`関数を最初に呼び出して、初期状態の背景を作成します。
+
+このコードを実行すると、ドロップダウンリストから効果を選択することで、さまざまなインタラクティブな背景を表示することができます。
