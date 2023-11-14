@@ -1,0 +1,106 @@
+---
+title: JavaScriptの短縮記法
+description: JavaScriptの短縮記法
+date: "2021-03-16"
+url: https://prodouga.com
+published: true
+---
+
+JavaScriptでは、オブジェクトのプロパティやメソッドを、短縮記法で呼び出すことができます。
+
+### プロパティの短縮記法
+
+プロパティの短縮記法は、`.`演算子を使用してプロパティにアクセスする代わりに、プロパティ名の前に`[]`演算子を使用します。
+
+```javascript
+const person = {
+  name: "John Doe",
+  age: 30
+};
+
+// 通常の記法
+console.log(person.name); // 出力：John Doe
+
+// 短縮記法
+console.log(person["name"]); // 出力：John Doe
+```
+
+### メソッドの短縮記法
+
+メソッドの短縮記法は、`()`演算子を使用してメソッドを呼び出す代わりに、メソッド名の後に`()`演算子を使用します。
+
+```javascript
+const person = {
+  sayHello() {
+    console.log("Hello, my name is " + this.name);
+  }
+};
+
+// 通常の記法
+person.sayHello();
+
+// 短縮記法
+person["sayHello"]();
+```
+
+### 短縮記法のメリット
+
+短縮記法は、コードをより簡潔に書くことができます。また、コードを読みやすく、理解しやすくなります。
+
+ただし、短縮記法は、すべてのプロパティやメソッドで使用できるわけではありません。以下のようなプロパティやメソッドでは、短縮記法を使用できません。
+
+* プロパティやメソッドに名前空間が指定されている場合
+* プロパティやメソッドに修飾子が指定されている場合
+* プロパティやメソッドがプロトタイプチェーンで定義されている場合
+
+### 短縮記法の使用例
+
+短縮記法は、さまざまな用途で使用できます。以下に、いくつかの例を示します。
+
+* オブジェクトのプロパティの値を取得する
+
+```javascript
+const person = {
+  name: "John Doe",
+  age: 30
+};
+
+// 通常の記法
+const name = person.name;
+
+// 短縮記法
+const name = person["name"];
+```
+
+* オブジェクトのプロパティの値を変更する
+
+```javascript
+const person = {
+  name: "John Doe",
+  age: 30
+};
+
+// 通常の記法
+person.name = "Jane Doe";
+
+// 短縮記法
+person["name"] = "Jane Doe";
+```
+
+* オブジェクトのメソッドを呼び出す
+
+```javascript
+const person = {
+  sayHello() {
+    console.log("Hello, my name is " + this.name);
+  }
+};
+
+// 通常の記法
+person.sayHello();
+
+// 短縮記法
+person["sayHello"]();
+```
+
+短縮記法は、JavaScriptのコードを書く際に、覚えておくと便利な機能です。

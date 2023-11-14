@@ -1,0 +1,99 @@
+---
+title: 高階関数とコールバック関数
+description: 高階関数とコールバック関数
+date: "2022-03-14"
+url: https://prodouga.com
+published: true
+---
+
+**高階関数とコールバック関数の使い方**
+
+高階関数とコールバック関数は、JavaScriptのさまざまな場面で使われており、コードの再利用性や柔軟性を高めるために役立ちます。
+
+**高階関数の使い方**
+
+高階関数を使うことで、関数を操作したり、他の関数に渡したりすることができます。
+
+例えば、配列の各要素を加工する関数を、高階関数として実装することができます。
+
+```javascript
+function processArray(array, callback) {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    const processedValue = callback(array[i]);
+    result.push(processedValue);
+  }
+  return result;
+}
+```
+
+この関数は、配列とコールバック関数を引数として受け取ります。コールバック関数は、配列の各要素を引数として受け取り、加工した値を返します。
+
+例えば、以下のコールバック関数は、各要素を2倍にします。
+
+```javascript
+function double(value) {
+  return value * 2;
+}
+```
+
+このコールバック関数をprocessArray関数に渡すと、以下のようになります。
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const doubledNumbers = processArray(numbers, double);
+console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+```
+
+このように、processArray関数は、コールバック関数によって、配列の各要素をさまざまな処理で加工することができます。
+
+**コールバック関数の使い方**
+
+コールバック関数は、特定のタイミングで実行したい処理を記述するのに使われます。
+
+例えば、イベントハンドラは、特定のイベントが発生したときに実行される関数です。イベントハンドラは、よくコールバック関数として実装されます。
+
+```javascript
+function onClick(event) {
+  console.log("クリックされました");
+}
+
+const button = document.querySelector("button");
+button.addEventListener("click", onClick);
+```
+
+このコードでは、onClick関数は、ボタンをクリックしたときに実行されます。
+
+また、コールバック関数は、非同期処理でよく使われます。非同期処理とは、処理が完了するまで待たずに、次の処理を実行する方法です。
+
+例えば、非同期でデータを取得して表示するコードは、以下のようになります。
+
+```javascript
+function getData() {
+  return new Promise((resolve, reject) => {
+    // データの取得処理
+    // ...
+
+    // 処理が完了したらresolveを呼び出す
+    resolve("データ取得成功");
+  });
+}
+
+getData().then(data => {
+  console.log(data);
+});
+```
+
+このコードでは、getData関数は、非同期でデータを取得します。getData関数は、Promiseオブジェクトを返します。Promiseオブジェクトは、処理の完了を待つためのオブジェクトです。
+
+thenメソッドは、Promiseオブジェクトのメソッドで、処理が完了したら実行されるコールバック関数を指定します。
+
+このコードでは、getData関数の処理が完了したら、thenメソッドで指定したコールバック関数（data => console.log(data)）が実行されます。
+
+**高階関数とコールバック関数のまとめ**
+
+高階関数とコールバック関数は、JavaScriptのさまざまな場面で使われており、コードの再利用性や柔軟性を高めるために役立ちます。
+
+高階関数は、関数を操作したり、他の関数に渡したりすることができます。
+
+コールバック関数は、特定のタイミングで実行したい処理を記述するのに使われます。

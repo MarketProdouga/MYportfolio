@@ -1,0 +1,79 @@
+---
+title: JavaScriptリファクタリング入門
+description: JavaScriptリファクタリング入門
+date: "2022-01-08"
+url: https://prodouga.com
+published: true
+---
+
+# JavaScriptリファクタリング入門
+
+リファクタリングは、コードの外部的な振る舞いを変えずに、内部の構造を改善するプロセスです。これにより、コードの可読性が向上し、バグを見つけやすくなり、新しい機能を追加しやすくなります。
+
+以下に、JavaScriptのコードをリファクタリングする具体的な例を示します。
+
+## 1. 関数の抽出
+
+長い関数は理解しにくく、バグを生みやすいです。したがって、関数をより小さな部分に分割することで、コードの可読性と再利用性を向上させることができます。
+
+```javascript
+// リファクタリング前
+function printBill(items) {
+  let total = 0;
+  items.forEach(item => {
+    total += item.price;
+  });
+  console.log('Total: ' + total);
+}
+
+// リファクタリング後
+function calculateTotal(items) {
+  let total = 0;
+  items.forEach(item => {
+    total += item.price;
+  });
+  return total;
+}
+
+function printBill(items) {
+  const total = calculateTotal(items);
+  console.log('Total: ' + total);
+}
+```
+
+## 2. 変数名の改善
+
+変数名はその変数の目的を明確に示すべきです。不明瞭な変数名はコードの理解を難しくします。
+
+```javascript
+// リファクタリング前
+let a = getArea(r);
+
+// リファクタリング後
+let area = getArea(radius);
+```
+
+## 3. 早期リターン
+
+条件分岐のネストはコードの可読性を下げます。早期リターンを使用することで、ネストを減らし、コードの可読性を向上させることができます。
+
+```javascript
+// リファクタリング前
+function getDiscount(price, user) {
+  if (user.isPremium) {
+    return price * 0.9;
+  } else {
+    return price;
+  }
+}
+
+// リファクタリング後
+function getDiscount(price, user) {
+  if (!user.isPremium) {
+    return price;
+  }
+  return price * 0.9;
+}
+```
+
+以上、JavaScriptのリファクタリングについての基本的なガイドラインを紹介しました。これらのテクニックを活用することで、より読みやすく、保守しやすいコードを書くことができます。リファクタリングはコードの品質を維持するための重要なスキルなので、ぜひ日々の開発に取り入れてみてください。.

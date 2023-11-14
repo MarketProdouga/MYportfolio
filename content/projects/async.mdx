@@ -1,0 +1,129 @@
+---
+title: async await構文を使ってWeb API
+description: async await構文を使ってWeb API
+date: "2022-05-16"
+published: true
+---
+
+**タイトル：初心者向け！async await構文を使ってWeb APIを叩こう！**
+
+### はじめに
+
+JavaScriptでは、Web APIを叩く際に非同期処理を使うことがあります。非同期処理とは、処理が完了するまで待たずに、次の処理を進める仕組みです。
+
+非同期処理を記述するには、Promiseオブジェクトを使う方法と、async/await構文を使う方法があります。Promiseオブジェクトは、非同期処理の完了を待つためのオブジェクトです。async/await構文は、Promiseオブジェクトを使わなくても、非同期処理をあたかも同期処理のように書くことができる構文です。
+
+今回は、初心者向けにasync/await構文を使ってWeb APIを叩く方法を解説します。
+
+### 1. 非同期処理とは？
+
+非同期処理とは、処理が完了するまで待たずに、次の処理を進める仕組みです。例えば、Web APIを叩く処理は、時間がかかる場合があります。このような処理を同期処理で記述すると、Web APIの処理が完了するまで、次の処理を実行することができません。
+
+非同期処理を使うと、Web APIの処理が完了するまで待たずに、次の処理を実行することができます。これにより、ユーザーエクスペリエンスを向上させることができます。
+
+### 2. async/await構文とは？
+
+async/await構文は、ES2017で導入された非同期処理を行うための構文です。asyncは非同期関数を定義するためのキーワードで、この関数内ではawaitキーワードを使うことができます。awaitはPromiseの結果を待つためのキーワードで、Promiseが解決されるまで処理を一時停止します。
+
+例えば、以下のようなコードは、fetch関数を使ってWeb APIを叩き、その結果を待ってから次の処理を進めるコードです。
+
+```javascript
+const response = await fetch('https://api.example.com/data');
+const data = await response.json();
+console.log(data);
+```
+
+このコードでは、まずfetch関数を使ってWeb APIを叩きます。次に、awaitキーワードを使って、fetch関数の処理が完了するのを待ちます。最後に、responseオブジェクトのjson()メソッドを使って、JSON形式で返されたデータを取得します。
+
+### 3. 実際に試してみよう
+
+それでは、実際にasync/await構文を使ってWeb APIを叩いてみましょう。以下のコードは、JSONPlaceholderというテスト用のAPIからデータを取得する例です。
+
+```javascript
+async function getPosts() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const posts = await response.json();
+  console.log(posts);
+}
+
+getPosts();
+```
+
+このコードを実行すると、consoleに取得したデータが表示されます。
+
+### 4. まとめ
+
+async/await構文を使うことで、非同期処理をあたかも同期処理のように書くことができます。これにより、非同期処理の理解が難しい初心者でも、簡単にWeb APIを叩くことができます。
+
+ぜひ、この機会にasync/await構文を使ってWeb APIを叩いてみましょう。
+
+### 追加内容
+
+**async関数とawaitキーワードの違い**
+
+async関数は、非同期処理を記述するための関数です。awaitキーワードは、非同期処理の完了を待つためのキーワードです。
+
+**Promiseオブジェクトの概要**
+
+Promiseオブジェクトは、非同期処理の完了を待つためのオブジェクトです。Promiseオブジェクトには、resolve()メソッドとreject()メソッドがあります。
+
+resolve()メソッドは、非同期処理が成功した場合に呼び出されます。
+
+reject()メソッドは、非同期処理が失敗した場合に呼び出されます。
+
+**try-catchブロックの使い方**
+
+async/await構文を使ってWeb APIを叩く際には、ネットワークエラーなどの例外が発生する可能性があります。そのため、try-catchブロックを使って例外処理を行うことをおすすめします。
+
+例えば、以下のコードは、try-catchブロックを使って例外処理を行う例です。
+
+```javascript
+async function getPosts() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const posts = await response.json();
+    console.log(posts);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getPosts();
+```
+
+このコードを実行すると、ネットワークエラーが発生した場合、consoleにエラーメッセージが表示されます。
+
+### 結論
+
+### Async/await構文のメリット
+
+async/await構文には、以下のメリットがあります。
+
+* 非同期処理を同期処理のように書くことができるため、理解しやすい。
+* 非同期処理の記述が簡潔になるため、コードが読みやすくなる。
+* 非同期処理の処理を並列実行することができるため、パフォーマンスが向上する。
+
+### Async/await構文のデメリット
+
+async/await構文には、以下のデメリットがあります。
+
+* 非同期処理の理解が難しい場合は、むしろ理解が難しくなる可能性がある。
+* 非同期処理の処理を並列実行する場合、注意が必要である。
+
+### まとめ
+
+async/await構文は、非同期処理を記述するための便利な構文です。初心者でも簡単にWeb APIを叩くことができるため、ぜひ使ってみてください。
+
+ただし、async/await構文にはメリットとデメリットがあることを理解した上で、適切に使用しましょう。
+
+### 今後の展望
+
+async/await構文は、今後も広く使われていくと考えられます。そのため、async/await構文を使いこなせるようにしておくと、将来的にも役立つでしょう。
+
+例えば、以下のようなことを学んでおくとよいでしょう。
+
+* async/await構文を使って、複雑な非同期処理を記述する方法
+* async/await構文を使って、非同期処理を並列実行する方法
+* async/await構文を使って、非同期処理の例外を処理する方法
+
+これらの知識を身につけておけば、より幅広い場面でasync/await構文を活用できるようになります。
