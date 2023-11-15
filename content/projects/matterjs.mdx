@@ -7,8 +7,294 @@ published: true
 
 <iframe width="100%" height="300" src="//jsfiddle.net/prodouga/2asdp85g/23/embedded/result/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-
 - `matter.js`は、物理シミュレーションを作成するためのJavaScriptライブラリです。2Dと3Dの両方の物理シミュレーションをサポートしており、非常に柔軟でカスタマイズ可能です。
 
 - `matter-attractors.js`は、JavaScriptで物理的なアトラクタを作成するためのライブラリです。matter-attractors.jsを使用すると、ニュートンの重力、クーロンの法則、その他の物理法則に基づくアトラクタを作成できます。このライブラリは、Webブラウザやサーバーサイドアプリケーションで使用できます。
 
+このポートフォリオサイトは、Matter.jsを使用した物理シミュレーションのデモを表示しています。
+
+### 使用した技術
+
+- Matter.js - 物理エンジンライブラリ 
+- jQuery - DOM操作とイベントハンドリング
+- HTML/CSS - マークアップとスタイル
+
+Matter.jsは2Dと3Dのリアルタイム物理シミュレーションを実現するJavaScriptライブラリです。このサイトでは、Matter.jsを使用して物体の衝突や吸引力などの物理演算を実装しています。
+
+### 制作意図
+
+- Matter.jsの機能を活用したインタラクティブな物理シミュレーションを実現すること
+- 物理法則に基づく動きをデモすることで、Matter.jsの表現力をアピールすること
+- スマホやタブレットなどのタッチデバイスでも楽しめるインタラクティブコンテンツを提供すること
+
+### こだわりポイント
+
+- 吸引力の設定により、物体同士が引き合う独特の動きを実現
+- マウス操作で物体を動かせるインタラクティブ性
+- ウィンドウサイズに合わせてシミュレーションサイズが調整されるレスポンシブデザイン
+- シンプルで洗練されたデザインによる高い完成度
+
+## ソースコード
+
+<iframe width="100%" height="300" src="//jsfiddle.net/prodouga/2asdp85g/23/embedded/js,html,css/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## html
+
+```html
+<!DOCTYPE html>
+<html lang="ja" >
+<head>
+  <meta charset="UTF-8">
+  <title>MatterJS - Prodouga</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="wrapper-canvas"></div>
+  <!-- Codepen -->
+  <div class="content">
+    <h1 class="title">
+      Prodouga
+    </h1>
+    <h2 class="subtitle">
+      Hi, I'm a front-end engineer.
+    </h2>
+  </div>
+  <div class="more-pens">
+    <a target="_blank" href="https://www.prodouga.com/" class="white-mode white-mode--highlight">OFFICIAL</a>
+    <a target="_blank" href="https://www.portfolio.prodouga.com" class="white-mode">PORTFOLIO</a>
+    <a target="_blank" href="https://www.prodouga.com/contact" class="white-mode">CONTACT</a>
+  </div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/matter-wrap@0.2.0/build/matter-wrap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
+```
+
+## cssの解説
+
+**全体的なスタイル**
+
+1. **Google Fontsのインポート**
+
+```css
+@import url("https://fonts.googleapis.com/css?family=Catamaran:300,400,500,600,700");
+```
+
+このコードは、Google FontsからCatamaranフォントファミリーをインポートします。このフォントは、タイトル、サブタイトル、ボタンなど、サイトの主要テキストに使用されます。
+
+2. **ページのスタイル**
+
+```css
+body {
+ padding: 0;
+ margin: 0;
+}
+```
+
+このコードは、ページの余白とマージンを削除して、コンテンツ全体を画面いっぱいに表示します。
+
+3. **キャンバスのスタイル**
+
+```css
+#wrapper-canvas {
+ display: block;
+ width: 100%;
+ height: 100%;
+ background: #FFFFFF;
+}
+```
+
+このコードは、キャンバス要素のスタイルを設定します。キャンバス要素は、Matter.jsシミュレーションをレンダリングするために使用されます。
+
+4. **「More Pens」ボタンのスタイル**
+
+```css
+.more-pens {
+ position: fixed;
+ right: 20px;
+ bottom: 20px;
+ z-index: 10;
+ font-family: "Catamaran", sans-serif;
+ font-size: 12px;
+}
+```
+
+このコードは、「More Pens」ボタンのスタイルを設定します。このボタンは、ページの下部に固定表示され、CodePenページへのリンクを提供します。
+
+5. **「White Mode」リンクのスタイル**
+
+```css
+a.white-mode:link, a.white-mode:visited, a.white-mode:active {
+ font-family: "Catamaran", sans-serif;
+ font-size: 12px;
+ text-decoration: none;
+ background: #212121;
+ padding: 8px 18px;
+ color: #f7f7f7;
+ border-radius: 20px;
+ margin: 0 4px;
+}
+```
+
+このコードは、「White Mode」リンクの通常状態、訪問済み状態、アクティブ状態のスタイルを設定します。これらのリンクは、サイトの配色を切り替えるためのものです。
+
+6. **「White Mode」リンクの強調表示**
+
+```css
+a.white-mode--highlight:link, a.white-mode--highlight:visited, a.white-mode--highlight:active {
+ background: #293FE9;
+}
+```
+
+このコードは、「White Mode」リンクの強調表示状態のスタイルを設定します。強調表示されたリンクは、現在アクティブな配色を示します。
+
+7. **「White Mode」リンクのホバー効果**
+
+```css
+a.white-mode:hover {
+ background: #edf3f8;
+ color: #212121;
+}
+```
+
+このコードは、「White Mode」リンクのホバー効果のスタイルを設定します。マウスカーソルをリンク上に置くと、背景色が変化します。
+
+
+## JavaScriptの解説
+
+この JavaScript コードは、Matter.js のシミュレーションを設定します。シミュレーションには、吸引力のある相互作用、マウス操作、ウィンドウのサイズ変更が含まれます。
+
+**初期設定**
+
+1. **キャンバスの取得**
+
+```
+var canvas = $("#wrapper-canvas").get(0);
+```
+
+このコードは、HTML 要素の ID が「wrapper-canvas」である要素を jQuery を使用して取得します。この要素は、Matter.js のシミュレーションをレンダリングするために使用されます。
+
+2. **ビューポートの寸法**
+
+```
+var dimensions = {};
+dimensions.width = $(window).width();
+dimensions.height = $(window).height();
+```
+
+このコードは、ブラウザウィンドウの現在の幅と高さを jQuery を使用して取得し、`dimensions` オブジェクトに格納します。このオブジェクトは、シミュレーションの設定に使用されます。
+
+3. **Matter プラグイン**
+
+```
+Matter.use('matter-attractors');
+Matter.use('matter-wrap');
+```
+
+このコードは、Matter.js の吸引力とラッピングのプラグインを読み込みます。
+
+**runMatter 関数**
+
+`runMatter` 関数は、シミュレーションの設定と実行を担当します。
+
+1. **モジュールのエイリアス**
+
+```
+// module aliases
+var Engine = Matter.Engine,
+Events = Matter.Events,
+Runner = Matter.Runner,
+Render = Matter.Render,
+World = Matter.World,
+Body = Matter.Body,
+Mouse = Matter.Mouse,
+Common = Matter.Common,
+Composite = Matter.Composite,
+Composites = Matter.Composites,
+Bodies = Matter.Bodies;
+```
+
+このコードは、Matter.js のモジュールにエイリアスを定義します。これにより、コードの可読性と簡潔性が向上します。
+
+2. **エンジンの作成**
+
+```
+// create engine
+var engine = Engine.create();
+```
+
+このコードは、Matter.js のエンジンを作成します。エンジンは、シミュレーションを実行するために必要なすべての機能を提供します。
+
+3. **重力の調整**
+
+```
+// adjust gravity
+engine.world.gravity.scale = 0;
+```
+
+このコードは、シミュレーションの重力を調整します。ここでは、重力を 0 に設定して、吸引力のみに基づく相互作用を実現しています。
+
+4. **レンダラーの作成**
+
+```
+// create renderer
+var render = Render.create({
+element: canvas,
+engine: engine,
+options: {
+showVelocity: false,
+width: dimensions.width,
+height: dimensions.height,
+wireframes: false,
+background: 'rgb(240,240,240)' } });
+```
+
+このコードは、Matter.js のレンダラーを作成します。レンダラーは、シミュレーションの状態を視覚化するために使用されます。
+
+5. **ランナーの作成**
+
+```
+// create runner
+var runner = Runner.create();
+```
+
+このコードは、Matter.js のランナーを作成します。ランナーは、シミュレーションのループを制御するために使用されます。
+
+6. **吸引体ボディの作成**
+
+```
+// create attractor body
+var attractiveBody = Bodies.circle(
+render.options.width / 2,
+render.options.height / 2,
+Math.max(dimensions.width / 4, dimensions.height / 4) / 2,
+{
+render: {
+fillStyle: `rgb(240,240,240)`,
+strokeStyle: `rgb(240,240,240)`,
+lineWidth: 0 },
+
+isStatic: true,
+plugin: {
+attractors: [
+function (bodyA, bodyB) {
+return {
+x: (bodyA.position.x - bodyB.position.x) * 1e-6,
+y: (bodyA.position.y - bodyB.position.y) * 1e-6 };
+
+}] } });
+```
+
+このコードは、中心に吸引力を生成する静的円形ボディを作成します。
+
+7. **吸引体ボディの追加**
+
+```
+// add attractor body
+World.add(world, attractiveBody);
