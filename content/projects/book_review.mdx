@@ -1,0 +1,75 @@
+---
+title: Wordpressの無料テーマに「書評」投稿タイプを追加して、自由なサイト構成を実現
+description: プラグインの新規作成、投稿タイプの登録、書評アーカイブのテンプレート作成の3つのステップで、簡単にカスタム投稿タイプを追加できます。
+url: https://wp-cocoon.com/category/theme/theme-customs/
+date: 2023-04-20
+published: true
+---
+
+`Cocoon`はシンプルでカスタマイズ性の高い`WordPress`の無料テーマですが、投稿タイプが限られているため、より高度なサイト構築には向いていません。 そこで、`Cocoon`に`書評`というカスタム投稿タイプを追加する方法を解説します。
+
+## 1. プラグインの新規作成
+
+新規に`book_review`というフォルダと、その中に新しいPHPファイル`book_review.php`を作成。
+標準的なプラグインのヘッダーを記述します。
+
+```php 
+/*
+Plugin Name: Book Review Custom Post
+Description: Cocoonに書評機能を追加
+Version: 1.0
+*/
+```
+
+プラグインの基本情報を記入します。
+
+## 2. 書評投稿タイプの登録
+
+`register_post_type()`を使用して、`book_review`という投稿タイプを定義します。
+
+```php
+function create_book_review(){
+
+  $labels = [
+    'name' => '書評',
+    'singular_name' => '書評'
+  ];
+
+  $args = [
+    'labels' => $labels,
+    'public' => true,
+    'has_archive' => true, 
+    'supports' => ['title','editor','thumbnail']
+  ];
+
+  register_post_type('book_review', $args);
+}
+
+add_action('init', 'create_book_review');
+```
+
+投稿タイプの設定を配列に格納し、可読性を高めています。アーカイブやサポート機能も指定しています。
+
+## 3. 書評アーカイブのテンプレート作成
+
+`Cocoon`のテンプレートをコピーし、書評だけ表示するようにします。
+
+```php
+// 記事がある場合
+if( have_posts() ) {
+
+  // 記事をループで出力
+  while( have_posts() ) {
+    the_post(); 
+
+    // 書評の場合のみ表示
+    if( 'book_review' === get_post_type() ) {
+      // タイトルと本文を出力
+      the_title();
+      the_content();
+    }
+  }
+}
+```
+
+これにより、`Cocoon`テーマに新しい投稿タイプ`書評`が追加され、`WordPress`の機能を活用して自由なサイト構成が実現できます。書評の投稿や表示を独立してカスタマイズでき、サイトの表現の幅が広がります。`WordPress`カスタマイズの能力を示すサンプルとしてぜひご活用ください。
